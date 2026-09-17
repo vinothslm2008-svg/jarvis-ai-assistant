@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import re
 
@@ -12,7 +13,7 @@ chrome_options.add_argument("--headless")
 chrome_driver_path = r'C:\Users\chatu\OneDrive\Desktop\J.A.R.V.I.S\DATA\chromedriver.exe'
 
 chrome_service = Service(chrome_driver_path)
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 # Open Google in the browser
 driver.get("https://www.google.com")

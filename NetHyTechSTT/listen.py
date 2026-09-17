@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from os import getcwd
@@ -13,7 +14,7 @@ chrome_options.add_argument("--headless=old")  # Remove this if you want to see 
 chrome_driver_path = f"{getcwd()}\\chromedriver.exe"
 service = Service(executable_path=chrome_driver_path)
 # Setting up the Chrome driver with the service and options
-driver = webdriver.Chrome(service=service, options=chrome_options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # Creating the URL for the website using the current working directory
 website = "https://allorizenproject1.netlify.app/"
 # Opening the website in the Chrome browser
